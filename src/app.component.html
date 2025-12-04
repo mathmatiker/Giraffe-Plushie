@@ -1,0 +1,80 @@
+<main class="w-full h-screen flex flex-col md:flex-row antialiased bg-amber-50 text-gray-800 font-['Gaegu']">
+  <div #canvasContainer class="w-full md:w-2/3 h-1/2 md:h-full relative">
+    <canvas #canvas class="w-full h-full block"></canvas>
+    <!-- Giraffe Name Display -->
+    @if (giraffeName()) {
+      <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/30 text-white px-6 py-2 rounded-full text-2xl md:text-3xl font-bold pointer-events-none shadow-lg backdrop-blur-sm">
+        {{ giraffeName() }}
+      </div>
+    }
+  </div>
+  <div class="w-full md:w-1/3 h-1/2 md:h-full flex flex-col justify-center items-center p-6 text-center overflow-y-auto">
+    <div class="w-full max-w-sm bg-white/80 backdrop-blur-sm p-8 rounded-3xl border-2 border-gray-500 shadow-[8px_8px_0px_#f472b6]">
+      <h1 class="text-4xl md:text-6xl font-bold text-pink-500">
+        My Plush Giraffe
+      </h1>
+      <p class="mt-4 text-xl text-gray-600">
+        Make your own stretchy friend! Use the controls below to change it.
+      </p>
+
+      <div class="mt-8 space-y-4 text-left">
+        <!-- Giraffe's Name -->
+        <div>
+          <label for="giraffeName" class="block mb-2 text-lg font-bold text-gray-700">Giraffe's Name</label>
+          <input id="giraffeName" type="text" [value]="giraffeName()" (input)="onGiraffeNameChange($event)" placeholder="Gigi the Giraffe" class="w-full px-4 py-2 text-xl bg-white border-2 border-gray-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
+        </div>
+        
+        <!-- Neck Length -->
+        <div>
+          <label for="neckLength" class="block mb-2 text-lg font-bold text-gray-700">Neck Length: {{ neckLength() }}</label>
+          <input id="neckLength" type="range" min="2" max="10" step="0.1" [value]="neckLength()" (input)="onNeckLengthChange($event)" class="w-full h-3 bg-gray-200 rounded-full appearance-none cursor-pointer accent-pink-500 border-2 border-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-300">
+        </div>
+
+        <!-- Leg Length -->
+        <div>
+          <label for="legLength" class="block mb-2 text-lg font-bold text-gray-700">Leg Length: {{ legLength() }}</label>
+          <input id="legLength" type="range" min="2" max="8" step="0.1" [value]="legLength()" (input)="onLegLengthChange($event)" class="w-full h-3 bg-gray-200 rounded-full appearance-none cursor-pointer accent-pink-500 border-2 border-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-300">
+        </div>
+
+        <!-- Horn Length -->
+        <div>
+          <label for="hornLength" class="block mb-2 text-lg font-bold text-gray-700">Horn Length: {{ hornLength() }}</label>
+          <input id="hornLength" type="range" min="0.5" max="3" step="0.1" [value]="hornLength()" (input)="onHornLengthChange($event)" class="w-full h-3 bg-gray-200 rounded-full appearance-none cursor-pointer accent-pink-500 border-2 border-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-300">
+        </div>
+        
+        <!-- Head Size -->
+        <div>
+          <label for="headSize" class="block mb-2 text-lg font-bold text-gray-700">Head Size: {{ headSize() }}x</label>
+          <input id="headSize" type="range" min="0.5" max="2" step="0.05" [value]="headSize()" (input)="onHeadSizeChange($event)" class="w-full h-3 bg-gray-200 rounded-full appearance-none cursor-pointer accent-pink-500 border-2 border-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-300">
+        </div>
+
+        <!-- Giraffe Color -->
+        <div>
+          <label for="giraffeColor" class="block mb-2 text-lg font-bold text-gray-700">Giraffe Color</label>
+          <input id="giraffeColor" type="color" [value]="giraffeColor()" (input)="onGiraffeColorChange($event)" class="w-full h-12 p-1 border-2 border-gray-400 rounded-lg cursor-pointer">
+        </div>
+
+        <!-- Spot Color -->
+        <div>
+          <label for="spotColor" class="block mb-2 text-lg font-bold text-gray-700">Spot Color</label>
+          <input id="spotColor" type="color" [value]="spotColor()" (input)="onSpotColorChange($event)" class="w-full h-12 p-1 border-2 border-gray-400 rounded-lg cursor-pointer">
+        </div>
+
+        <!-- Auto-rotate Checkbox -->
+        <div class="pt-2">
+          <label for="autoRotate" class="flex items-center space-x-3 text-lg font-bold text-gray-700 cursor-pointer">
+            <input id="autoRotate" type="checkbox" [checked]="autoRotate()" (change)="onAutoRotateChange($event)" class="w-6 h-6 text-pink-500 bg-gray-100 border-gray-400 border-2 rounded-md focus:ring-pink-500 focus:ring-offset-2 focus:ring-2">
+            <span>Auto-rotate Giraffe</span>
+          </label>
+        </div>
+
+        <!-- Download Button -->
+        <div class="pt-4">
+          <button (click)="downloadModel()" class="w-full bg-pink-500 text-white font-bold text-xl py-3 px-4 rounded-xl border-2 border-gray-500 hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2 transition-transform duration-150 ease-in-out transform hover:scale-105 shadow-[4px_4px_0px_#f9a8d4]">
+            Download Giraffe (.glb)
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

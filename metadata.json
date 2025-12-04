@@ -1,0 +1,5 @@
+{
+  "name": "Interactive 3D Giraffe",
+  "description": "An interactive 3D model of a plush, child-style giraffe created with Three.js and Angular. Rotate and scale the model to view it from all sides.",
+  "requestFramePermissions": []
+}
